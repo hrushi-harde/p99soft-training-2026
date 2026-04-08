@@ -1,0 +1,15 @@
+flow :-
+main.py (API)
+        ↓
+schemas.py (Validation)
+        ↓
+crud.py (Logic)
+        ↓
+models.py (Table)
+        ↓
+database.py (Connection)
+        ↓
+    PostgreSQL
+        ↓
+     Response
+        
