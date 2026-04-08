@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #eef2f3, #dfe9f3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    background: #ffffff;
+    padding: 30px;
+    width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+input, textarea, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Row Layout */
+.row {
+    display: flex;
+    gap: 12px;
+}
+
+.row .form-group {
+    flex: 1;
+}
+
+/* Radio Buttons */
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* ========================= */
+/* 📱 MOBILE (up to 600px) */
+/* ========================= */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, textarea, select {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* ========================= */
+/* 📲 TABLET (601px - 992px) */
+/* ========================= */
+@media (min-width: 601px) and (max-width: 992px) {
+    .container {
+        width: 70%;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input, textarea, select {
+        font-size: 14px;
+    }
+
+    .row {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
+/* ========================= */
+/* 💻 LAPTOP (993px and above) */
+/* ========================= */
+@media (min-width: 993px) {
+    .container {
+        width: 500px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input, textarea, select {
+        font-size: 15px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}
