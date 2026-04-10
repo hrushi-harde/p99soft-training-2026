@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO Do Application</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+<body>
+
+ <h1 id="heading">TO DO List</h1>
+ <div id="displayContainer"></div>
+
+    <div class="container">
+        <input type="text" id="task" />
+        <select id="priority" class="selects">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <button onclick="addTask()" class="btn">Add Task</button>
+    </div>
+
+    <script>
+        let task=[];
+
+        function showToast(message, color) {
+            Toastify({
+                text: message,
+                duration: 2000,
+                gravity: "top",
+                position: "right",
+                style: {
+                    background: color
+                }
+            }).showToast();
+        }
+        
+        function addTask(){
+            let taskElement = document.getElementById('task');
+            let priorityElement = document.getElementById('priority');
+
+            if(taskElement.value.trim() === ""){
+                showToast("⚠️ Enter a task first", "#ff9800");
+                return;
+            }
+
+            const tasks = {
+               task: taskElement.value,
+               priority: priorityElement.value,
+            };
+
+            task.push(tasks);
+            localStorage.setItem('Tasks', JSON.stringify(task)); 
+            displayTask(task);
+
+            showToast("✅ Task Added", "#4caf50");
+
+            taskElement.value = "";
+        }
+
+        const savedTask = localStorage.getItem("Tasks");
+        if (savedTask) {
+            task = JSON.parse(savedTask);
+            displayTask(task); 
+        } 
+
+        function displayTask(Display){
+            let display = document.getElementById('displayContainer');
+            display.innerHTML = "";
+
+            for(let i = 0; i < Display.length; i++){
+                display.innerHTML += `<div id="displayContainers">
+                    <h1 class="h1tag">${Display[i].task}</h1>
+                    <h2 class="h2tag">${Display[i].priority}</h2>
+                    <button class="btn2" onclick="deletes(this)">✔ Complete</button>
+                </div>`;    
+            }   
+        }
+
+        function deletes(button) {
+            let taskElement = button.parentElement; 
+            let taskText = taskElement.querySelector(".h1tag").innerText; 
+            let index = task.findIndex(t => t.task === taskText); 
+
+            if (index !== -1) {
+                task.splice(index, 1);
+                localStorage.setItem('Tasks', JSON.stringify(task));
+                displayTask(task); 
+
+                showToast("🎉 Task Completed", "#2196f3");
+            }
+        }  
+    </script>
+
+</body>
+</html>
