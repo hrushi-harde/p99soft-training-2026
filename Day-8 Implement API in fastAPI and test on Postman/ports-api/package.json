@@ -1,0 +1,33 @@
+{
+  
+  "name": "ports-api",
+  
+  "version": "1.0.0",
+  
+  "type": "module",
+  
+  "description": "",
+  
+  "main": "index.js",
+  
+  "scripts": {
+  
+    
+  "start": "node app.js",
+  "dev":"node --watch app.js"
+  
+  },
+  
+  "keywords": [],
+  
+  "author": "",
+  
+  "license": "ISC",
+  
+  "dependencies": {
+  
+    
+  "express": "^5.2.1"
+  
+  }
+}
